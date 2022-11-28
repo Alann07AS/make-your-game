@@ -16,7 +16,35 @@ class Ship {
         this.sprite = sprite
         
     }
-    set setLife(lifeAmount) {
-        this.setLife = lifeAmount
+    set life(lifeAmount) {
+        this._life = lifeAmount
     }
+    set score(lifeAmount) {
+        this._score = lifeAmount
+    }
+    set stamina (a) {
+        this._stamina = a
+    }
+    set speedBuff (a) {
+        this._speedBuff = a
+    }
+    set refieldReady(a) {
+        this._refieldReady = a
+    }
+    get life() {
+        return this._life
+    }
+    get score() {
+        return this._score
+    }
+    get stamina () {
+        return this._stamina
+    }
+    get speedBuff () {
+        return this._speedBuff
+    }
+    get refieldReady() {
+        return this._refieldReady
+    }
+
 }

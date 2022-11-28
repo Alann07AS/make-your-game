@@ -20,7 +20,9 @@ class Alien {
         this.setLife = lifeAmount
     }
     set setPoint(pointAmount) {
-        this.point = pointAmount
+        this.point_ = pointAmount
     }
-
+    get point() {
+        return this.point_
+    }
 }

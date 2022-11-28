@@ -17,8 +17,9 @@ class GameEngine {
         const th = this
         this.gameLoop = function () {
             th.gameObjectList.map((obj,i)=>{
+                obj.triggerList = []
                 if (obj.isMoving && (obj.triggerable || obj.rigidBody)) {
-                    const newTriherList = []
+                    const newTriggerList = []
                     th.gameObjectList.map((obj2,i2)=>{
                         if (obj2 != obj) {
                             const distanceTable = []
@@ -29,7 +30,7 @@ class GameEngine {
                             // if is Triger
                             const max = Math.max(...distanceTable)
                             if (max < 0 ) {
-                                if (obj.triggerable ) newTriherList.push(obj2) //.id
+                                if (obj.triggerable ) newTriggerList.push(obj2) //.id
                             }
                             // bloque if colision
                             if (obj.rigidBody && obj2.rigidBody && max < obj.propertys.speed) {
@@ -38,7 +39,7 @@ class GameEngine {
                             }
                         }
                     })
-                    obj.triggerList = newTriherList
+                    obj.triggerList = [...newTriggerList]
                     obj.isMoving = false
                 }
             })
@@ -90,6 +91,15 @@ class GameEngine {
         document.body.removeChild(this.div)
     }
 
+    static removeGameObjectId(id) {
+        this.gameObjectList.forEach((v,i)=>{
+            if (v.id == id) {
+                v.item.sprite.remove()
+                this.gameObjectList.splice(i,1)
+                return
+            }
+        })
+    }
 }
 
 

@@ -95,7 +95,7 @@ class GameObject {
         this.isMoving = true
         return class {
             static left (speed = th.speed) {
-                if (!th.moveLiberty[1].lib) {th.moveLiberty[1].lib = true; speed = th.moveLiberty[1].dist}
+                if (!th.moveLiberty[1].lib) {th.moveLiberty[1].lib = true; speed = -th.moveLiberty[1].dist}
                 th.x += -speed
                 th.item.sprite.style.left = th.x+"px"
             }
@@ -105,7 +105,7 @@ class GameObject {
                 th.item.sprite.style.left = th.x+"px"
             }
             static up (speed = th.speed) {
-                if (!th.moveLiberty[3].lib) {th.moveLiberty[3].lib = true; speed = th.moveLiberty[3].dist}
+                if (!th.moveLiberty[3].lib) {th.moveLiberty[3].lib = true; speed = -th.moveLiberty[3].dist}
                 th.y += -speed
                 th.item.sprite.style.top = th.y+"px"
             }
@@ -128,40 +128,15 @@ class GameObject {
             
         }
     }
+
+    static getGameObjectByIdInASlice(table, id) {
+        return table.map(obj => {
+            if (obj.id == id) {return obj}
+        });
+    }
+    destroyGameObject() {
+        this.item.sprite.remove()
+        delete this
+    }
+    
 }
-
-
-
-
-
-// Obect into GameObject into GameEngine
-
-
-
-
-
-
-
-
-
-
-// class Ship {
-//     /**
-//      * Creates an instance of Ship. 
-//      * @param imgLink The path of the img.
-//      * @param shipName The id of the ship.
-//      */
-//     constructor(shipName, imgLink) {
-//         const sprite = document.createElement('img')
-//         sprite.src = imgLink
-//         this.name = shipName
-//         this.sprite = sprite
-//         this.width = sprite.width
-//         this.height = sprite.height
-//     }
-//     set setLife(lifeAmount) {
-//         this.setLife = lifeAmount
-//     }
-// }
-
-// new GameObject(0, new Ship('LOL', './spaceShip1Reduce.png'))

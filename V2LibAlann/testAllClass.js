@@ -66,7 +66,7 @@ const GOtestEnemy = new GameObject(2, testEnemy)
 GOoneEnemy.propertys.speed = 5
 GOoneEnemy.propertys.y = 200
 GOoneEnemy.propertys.x = 207
-GOoneEnemy.rigidBody = false
+GOoneEnemy.rigidBody = true
 
 
 
@@ -75,19 +75,22 @@ GOoneEnemy.rigidBody = false
 
 const player = new Ship('testShip', './sprites/spaceShip1Reduce.png')
 const GOplayer = new GameObject(1, player)
-GOplayer.triggerable = true
-GOplayer.rigidBody = false
+GOplayer.triggerable = false
+GOplayer.rigidBody = true
 GOplayer.propertys.y = 600
 console.log(GOplayer.y, GOplayer.x, GOplayer.propertys.width, GOplayer.propertys.height);
 GOplayer.propertys.speed = 6
-GOplayer.triggerable = true 
 // testPlayGround.AddGameObjectToPlayGround(GOoneEnemy, GOplayer) //Obselette
 GOtestEnemy.propertys.x = 250
 GOtestEnemy.propertys.y = 180
 GameEngine.setPlayGroundObject = testPlayGround
-GameEngine.addGameObject(GOoneEnemy, GOtestEnemy, GOplayer)
+GameEngine.addGameObject(GOoneEnemy, GOplayer)
 
 
+
+
+let timeLeft = 100
+const miCd = new CooldDown(1000, console.log, 'coucou')
 console.log(GOplayer.vecteur);
 GameEngine.setGameLoop = ()=>{
     // KeyManager.whileKeyDown(KeyManager.UpArrow,()=>{GOoneEnemy.UpDateVecteurAngle(GOoneEnemy.vecteur.angle+4)})
@@ -104,12 +107,18 @@ GameEngine.setGameLoop = ()=>{
     // KeyManager.whileKeyDown(KeyManager.DownArrow, ()=>{GOplayer.propertys.vecteurAngle = 90})
     // KeyManager.whileKeyDown(KeyManager.RightArrow, ()=>{GOplayer.propertys.vecteurAngle = 0})
     // KeyManager.whileKeyDown(KeyManager.LeftArrow, ()=>{GOplayer.propertys.vecteurAngle = 180})
+    KeyManager.whileKeyDown(KeyManager.UpArrow, ()=>{GOplayer.move.up()})
+    KeyManager.whileKeyDown(KeyManager.DownArrow, ()=>{GOplayer.move.down()})
+    KeyManager.whileKeyDown(KeyManager.RightArrow, ()=>{GOplayer.move.right()})
+    KeyManager.whileKeyDown(KeyManager.LeftArrow, ()=>{GOplayer.move.left()})
+    
     // GOplayer.move.vecteur()
     // console.log(GOplayer.triggerList, 'd');
     // if (GOplayer.triggerList.length != 0) {GOplayer.propertys.visibility = false} else {GOplayer.propertys.visibility = true}
     // KeyManager.whileKeyDown(' ', ()=>{console.log('alwaysDown');})
 // KeyManager.whileKeyUp(' ', ()=>{console.log('alwaysUp');})
-KeyManager.onKeyDown(' ', ()=>{console.log('oneDownEvent');})
-KeyManager.onKeyUp(' ', ()=>{console.log('oneUpEvent');})
+KeyManager.onKeyDown('a', ()=>{miCd.start();})
+KeyManager.whileKeyDown('z', ()=>{miCd.stop();})
 }
 GameEngine.startGame()
+

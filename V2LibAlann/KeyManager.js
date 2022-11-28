@@ -22,36 +22,16 @@ class KeyManager {
         this.keyMap[k.key] = false
     })
     // KeyManager Methode
-    static whileKeyDown(key, func) {
-        if (this.keyMap[key]) func()
+    static whileKeyDown(key, func, ...param) {
+        if (this.keyMap[key]) func(...param)
     }
-    static whileKeyUp(key, func) {
-        if (!this.keyMap[key]) func()
+    static whileKeyUp(key, func, ...param) {
+        if (!this.keyMap[key]) func(...param)
     }
-    static onKeyDown(key, func) {
-        if (this.keyMap[key] && !this.keyMapLastState[key]) {func(); this.keyMapLastState[key] = true}
+    static onKeyDown(key, func, ...param) {
+        if (this.keyMap[key] && !this.keyMapLastState[key]) {func(...param); this.keyMapLastState[key] = true}
     }
-    static onKeyUp(key, func) {
-        if (!this.keyMap[key] && this.keyMapLastState[key]) {func(); this.keyMapLastState[key] = false}
+    static onKeyUp(key, func, ...param) {
+        if (!this.keyMap[key] && this.keyMapLastState[key]) {func(...param); this.keyMapLastState[key] = false}
     }
 }
-
-
-// KeyManager.whileKeyDown(' ',function () {console.log('coucou');})
-/*
-        keysAction: {},
-
-        addActionKey: function (key, action) {
-            this.keysAction[key] = {}
-            this.keysAction[key].state = false
-            this.keysAction[key].listener = [
-                document.addEventListener('keydown', (k) => { if (k.key == key) {this.keysAction[key].state = true}}),
-                document.addEventListener('keyup', (k) => {if (k.key == key) {this.keysAction[key].state   = false}}),
-            ]
-            this.keysAction[key].checkForAction = function () {
-                if (this.state) {
-                    action()
-                }
-            }
-        }
-*/
