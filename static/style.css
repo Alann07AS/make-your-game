@@ -1,10 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
 body {
+    width: 100vw;
+    height: 100vh;
     font-family: sans-serif;
     letter-spacing: 1.5px;
     background: black;
     display: flex;
     flex-direction: column;
-    padding: 5rem;
+    align-items: center;
     font-size: 12px;
     overflow: hidden;
 }
@@ -22,11 +28,10 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     display:flex;
-    width: 99vw;
-    height: 10vh;
+    width: 100vw;
+    height: 7vh;
     top: 0px;
     left: 0px;
-    position: fixed;
     justify-content: space-around;
     align-items: center;
     background: black;
@@ -38,14 +43,12 @@ body {
 
 .gamebox{
     display: flex;
-    width: 80vw;
-    height: 80vh;
-    left: 0px;
+    width: 100vw;
+    height: 86vh;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    background: rgb(79, 79, 80);
     /* background: url("../images/hd-wallpaper-gee44964bb_1280.jpg"); */
-    
 }
 
 .ennemybox{
@@ -115,8 +118,8 @@ img{
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     display:flex;
-    width: 99vw;
-    height: 10vh;
+    width: 100vw;
+    height: 7vh;
     bottom: 0px;
     left: 0px;
     position: absolute;

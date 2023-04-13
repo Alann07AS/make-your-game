@@ -31,8 +31,8 @@ var left = false// move plane to left
 var gameinit = function (){
     toRight = true
     ennemybox.className = "ennemybox"
-    ennemybox.style.left = g.x + 'px'
-    ennemybox.style.top = g.y + 50 + 'px'
+    ennemybox.style.left = g.x + 20 + 'px'
+    ennemybox.style.top = g.y + 20 + 'px'
     gamebox.appendChild(ennemybox)
     for (let j=0;j<lines;j++){  // adding the ennemies to ennemybox
         for (let i=0;i<cols;i++){

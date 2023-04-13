@@ -14,7 +14,7 @@ function stopAnim() {
     window.cancelAnimationFrame(req)
     req = undefined
 }
-var lastright = g.left // to find the last ennemy to right
+var lastright = g.left // to find the last ennemy to right, g is gamebox coordinates
 var lastleft = g.right // to find the last ennemy to left
 var lastbottom = g.top// to find the last ennemy to bottom
 var ennemies
